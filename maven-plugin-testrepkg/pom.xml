@@ -2,16 +2,11 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.zero.maven</groupId>
-		<artifactId>maven-plugins</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
-	</parent>
+	<groupId>com.zero.maven</groupId>
 	<artifactId>maven-plugin-testrepkg</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-
 	<name>maven-plugin-testrepkg</name>
-	<url>http://maven.apache.org</url>
 
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -39,6 +34,7 @@
             <id>REPKGED</id>
             <properties>
                 <repkged.classifier>repkged</repkged.classifier>
+                <repkg.plugin.version>1.0.0-SNAPSHOT</repkg.plugin.version>
             </properties>
             <activation>
                 <activeByDefault>false</activeByDefault>
@@ -48,14 +44,14 @@
                 <plugins>
                     <plugin>
                         <groupId>com.zero.maven</groupId>
-                        <artifactId>maven-plugin-repkg</artifactId>
-                        <version>0.0.1-SNAPSHOT</version>
+                        <artifactId>maven-plugin-repkgsource</artifactId>
+                        <version>${repkg.plugin.version}</version>
                         <executions>
                             <execution>
-                                <id>repkg</id>
+                                <id>repkg-repkgsources</id>
                                 <phase>generate-sources</phase>
                                 <goals>
-                                    <goal>repkg</goal>
+                                    <goal>repkgsources</goal>
                                 </goals>
                                 <configuration>
                                     <fromPkg>com.zero</fromPkg>
@@ -69,10 +65,10 @@
                     <plugin>
                         <groupId>com.zero.maven</groupId>
                         <artifactId>maven-plugin-repkgcompiler</artifactId>
-                        <version>0.0.1-SNAPSHOT</version>
+                        <version>${repkg.plugin.version}</version>
                         <executions>
                             <execution>
-                                <id>repkgcompiler</id>
+                                <id>repkg-repkgcompiler</id>
                                 <phase>process-sources</phase>
                                 <goals>
                                     <goal>repkgcompiler</goal>

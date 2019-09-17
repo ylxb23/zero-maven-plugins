@@ -31,8 +31,8 @@ hs_err_pid*
 
 # temp
 *.swp
-maven-plugin-repkg/target/
 maven-plugin-repkgcompiler/target/
+maven-plugin-repkgsources/target/
 maven-plugin-testrepkg/target/
 testrepkg-common/target/
 

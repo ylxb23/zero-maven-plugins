@@ -16,6 +16,9 @@ import org.codehaus.plexus.util.StringUtils;
  */
 public abstract class AbstractRepkgCompilerMojo extends AbstractMojo {
 	
+	/**
+	 * maven project.
+	 */
 	@Parameter(defaultValue="${project}", readonly=true)
 	private MavenProject project;
 	

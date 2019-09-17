@@ -1,4 +1,4 @@
-package com.zero.maven.plugin.repkg;
+package com.zero.maven.plugin.repkgsources;
 
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
@@ -7,20 +7,29 @@ import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 
 /**
- * 源文件处理
+ * 源文件处理，拷贝java源文件，将源代码的包名重命名成新的包名，并重命名项目的groupId成新groupId
  * @date 2019年9月8日 下午10:43:41
  * @author zero
  */
-@Mojo(name="repkg", defaultPhase=LifecyclePhase.GENERATE_SOURCES)
-public class RepkgMojo extends AbstractRepkgMojo {
+@Mojo(name="repkgsources", defaultPhase=LifecyclePhase.GENERATE_SOURCES, threadSafe=true)
+public class RepkgSourcesMojo extends AbstractRepkgSourcesMojo {
 
-	@Parameter(property="repkg.fromPkg", defaultValue="${repkg.fromPkg}", required=true, readonly=false)
+	/**
+	 * 源部分包名
+	 */
+	@Parameter(property="repkg.fromPkg", defaultValue="", required=true, readonly=false)
 	private String fromPkg;
 	
-	@Parameter(property="repkg.toPkg", defaultValue="${repkg.toPkg}", required=true, readonly=false)
+	/**
+	 * 重命名后的部分包名
+	 */
+	@Parameter(property="repkg.toPkg", defaultValue="", required=true, readonly=false)
 	private String toPkg;
 	
-	@Parameter(property="repkg.toGroupId", defaultValue="${repkg.toGroupId}", required=true, readonly=false)
+	/**
+	 * 重命名包名后的groupId
+	 */
+	@Parameter(property="repkged.toGroupId", defaultValue="", required=true, readonly=false)
 	private String toGroupId;
 	
 	

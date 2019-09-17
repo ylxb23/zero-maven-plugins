@@ -1,4 +1,4 @@
-package com.zero.maven.plugin.repkg;
+package com.zero.maven.plugin.repkgsources;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -22,14 +22,23 @@ import org.apache.maven.project.MavenProject;
  * @date 2019年9月11日 上午12:37:24
  * @author zero
  */
-public abstract class AbstractRepkgMojo extends AbstractMojo {
+public abstract class AbstractRepkgSourcesMojo extends AbstractMojo {
 
-	@Parameter(property="repkg.sourceDir", defaultValue="${repkg.source}", required=true, readonly=false)
+	/**
+	 * 源文件路径，默认{@code ${basedir}/src/main/java/}
+	 */
+	@Parameter(property="repkg.sourceDir", defaultValue="${basedir}/src/main/java/", required=true, readonly=false)
 	private String sourceDir;
 	
-	@Parameter(property="repkg.targetDir", defaultValue="${repkg.target}", required=true, readonly=false)
+	/**
+	 * 重命名包名之后的源文件路径，默认{@code ${basedir}/target/repkged/java/}
+	 */
+	@Parameter(property="repkg.targetDir", defaultValue="${basedir}/target/repkged/java/", required=true, readonly=false)
 	private String targetDir;
 	
+	/**
+	 * maven project.
+	 */
 	@Parameter(defaultValue="${project}", readonly=true)
 	private MavenProject project;
 	
